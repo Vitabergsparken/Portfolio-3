@@ -40,6 +40,7 @@ function About({ onNavigate }) {
         <h1>Hi, I'm Leo — a <em>UX-designer</em> based in Stockholm.</h1>
         <p>I've wanted to work with design all my life. I didn't realize it until I started my UX-design education at Chas Academy in 2023.</p>
         <p>I believe a great UX-designer is one who has a real understanding of their user, and the fundamentals and creativity to turn that understanding into a clear solution - FAST, thanks to AI-software.</p>
+        <p>I also think a lot about people's time — including yours. That's why this site is short: a few clear points instead of a wall of text. If something here raises a question, ask — I'll happily go as deep as you want.</p>
         <p>I value empathy, openness, honesty and humor (obviously).</p>
         <div className="about__values">
           <span className="chip">Research</span>
@@ -145,30 +146,34 @@ const CASES = {
     {
       h: "Summary",
       body: [
-      "My previous portfolio lived in Framer. It looked fine, but every change meant fighting the editor, and the result never quite felt like mine.",
-      "I rebuilt it from scratch with Claude — designing the system in Claude and building the front-end with Claude Code. This page is the result: a hand-built prototype with a draggable 3D cube as its menu."]
+      "My previous portfolio lived in Framer. It worked, but I wanted to practice building with AI tools — so I rebuilt it from scratch.",
+      "I used Claude to develop the design system and Claude Code to handle the front-end. The result is a tighter, more polished version of my old portfolio: same visual instincts, sharper execution, full ownership of the code."]
 
     },
     {
-      h: "Why I switched",
+      h: "Why I rebuilt it",
       body: [
-      "Framer is fast to start and slow to own. Its templates pushed me toward the same layouts everyone else uses, and the moment I wanted something specific — a cube you can throw and let glide — I hit the ceiling.",
-      "I wanted full control of the markup and the motion, without hand-writing every line myself."]
+      "To keep my skills relevant. AI-assisted design and development is where the market is heading, and I'd rather learn by doing than watch from the side. Rebuilding something I already knew well meant I could focus entirely on the workflow, not the problem."]
 
     },
     {
       h: "Process",
       body: [
-      "I worked with Claude the way I'd work with a developer: describing the feel I wanted, reviewing what came back, and iterating in tight loops. I designed the system first — one accent, one typeface, straight lines — then built against it.",
-      "Claude Code handled the React, the hash routing, and the cube physics. I stayed focused on the decisions that matter: hierarchy, motion, copy, restraint."],
+      "I treated Claude the way I'd treat a developer: describing intent, reviewing output, iterating fast. The design system came first — one accent, one typeface, straight lines — then I built against it.",
+      "The process was largely frictionless. The few obstacles I hit were resolved quickly with Claude's help. That speed compounded: faster iteration meant more attempts, more attempts meant a better result. Claude Code handled React, hash routing, and cube physics. I stayed focused on hierarchy, motion, copy, and restraint."],
 
       tags: ["Claude Code", "Design system", "Prototype"]
     },
     {
+      h: "The cube",
+      body: [
+      "Not strictly necessary — but a portfolio is often a recruiter's first interaction with how you think about interaction. A tactile, memorable navigation element is a deliberate choice: I care about feel, not just function, and I'm willing to commit to that even when the safe option exists."]
+
+    },
+    {
       h: "Result",
       body: [
-      "A portfolio I actually own — every token, every transition, every word. It's faster to change, easier to extend, and it finally reads like me.",
-      "Thanks for reading.  — Leo"]
+      "A portfolio I actually own, and a clearer picture of what AI can do in a design workflow. Honestly — it can handle a lot. But that's not a threat to the role, it's an opportunity: when AI absorbs the execution, designers get more time for the thing that actually drives better products — talking to users."]
 
     }],
 
@@ -274,9 +279,9 @@ function Resume() {
       <div className="resume__head">
         <h1 className="resume__name">LEO STIDER</h1>
         <div className="resume__contact">
-          <a href="mailto:lestider@gmail.com">lestider@gmail.com</a>
-          <a href="tel:+46720116696">(+46) 720 11 66 96</a>
-          <a href="#linkedin">LinkedIn</a>
+          <a href="mailto:lestider@gmail.com" target="_blank" rel="noopener noreferrer">lestider@gmail.com</a>
+          <a href="tel:+46720116696" target="_blank" rel="noopener noreferrer">(+46) 720 11 66 96</a>
+          <a href="https://www.linkedin.com/in/leo-stider-0b781028b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
 

@@ -75,9 +75,9 @@ function ContactFace() {
     <div className="cube__corner">Contact · 04 / 06</div>
     <div className="cube__contact">
       <div className="cube__sub" style={{ opacity: 0.7 }}>Mail</div>
-      <a href="mailto:lestider@gmail.com">lestider@gmail.com</a>
+      <a href="mailto:lestider@gmail.com" target="_blank" rel="noopener noreferrer">lestider@gmail.com</a>
       <div className="cube__sub" style={{ opacity: 0.7, marginTop: 16 }}>Phone</div>
-      <a href="tel:+46720116696">+46 720 11 66 96</a>
+      <a href="tel:+46720116696" target="_blank" rel="noopener noreferrer">+46 720 11 66 96</a>
     </div>
     <div className="cube__sub">Tap to reach me ↗</div>
   </>;
@@ -155,6 +155,9 @@ function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94, 
   }, []);
 
   const onPointerDown = useCb1((e) => {
+    // Let taps on face links/buttons (résumé, contact, projects, about) fall
+    // through to their native click — don't start a drag/capture for them.
+    if (e.target.closest("a, button")) return;
     stopInertia();
     setHasInteracted(true);setDragging(true);
     const s = stateRef.current;

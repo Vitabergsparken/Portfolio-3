@@ -70,9 +70,9 @@ function App() {
       <footer className="foot" style={{ backgroundColor: "rgb(227, 224, 255)" }}>
           <div style={{ color: "rgb(0, 0, 0)" }}>Leo Stider · {new Date().getFullYear()}</div>
           <div className="foot__links">
-            <a href="mailto:lestider@gmail.com" style={{ color: "rgb(0, 0, 0)" }}>Email</a>
-            <a href="tel:+46720116696" style={{ color: "rgb(0, 0, 0)" }}>Phone</a>
-            <a href="#linkedin" style={{ color: "rgb(0, 0, 0)" }}>LinkedIn</a>
+            <a href="mailto:lestider@gmail.com" target="_blank" rel="noopener noreferrer" style={{ color: "rgb(0, 0, 0)" }}>Email</a>
+            <a href="tel:+46720116696" target="_blank" rel="noopener noreferrer" style={{ color: "rgb(0, 0, 0)" }}>Phone</a>
+            <a href="https://www.linkedin.com/in/leo-stider-0b781028b/" target="_blank" rel="noopener noreferrer" style={{ color: "rgb(0, 0, 0)" }}>LinkedIn</a>
           </div>
         </footer>
       }
