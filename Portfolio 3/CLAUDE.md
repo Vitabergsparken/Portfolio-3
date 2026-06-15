@@ -44,7 +44,6 @@ Entry point is `index.html`. It loads, in order:
 | `tweaks-panel.jsx` | Reusable in-page "Tweaks" panel + form controls. |
 | `ds/` | The Portfolio Design System — tokens, fonts, components. |
 | `assets/` | Images (e.g. `portrait.png`). |
-| `archive-v1/` … `archive-v6/` | Frozen version checkpoints. Safe to delete if not needed. |
 
 ### How the scripts share scope
 

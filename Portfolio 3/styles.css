@@ -33,6 +33,8 @@ body { min-height: 100vh; }
 }
 .topnav__brand {
   border: 0; color: var(--ink); cursor: pointer;
+  background: var(--accent);
+  padding: 7px 11px;
   font-family: var(--font-sans);
   font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
   transition: opacity 120ms var(--ease-out);
@@ -165,6 +167,21 @@ body { min-height: 100vh; }
   font-size: 44px; font-weight: 300;
   letter-spacing: -0.04em; line-height: 0.92; margin: 0;
 }
+/* "shipped" emphasis on the About face — switchable via the "Shipped emphasis" tweak. */
+.cube__ship { font-style: normal; }
+.cube__about[data-emphasis="accent"] .cube__ship {
+  background: var(--accent);
+  padding: 0 0.1em;
+  margin: 0 -0.05em;
+}
+.cube__about[data-emphasis="scale"] .cube__ship {
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+}
+.cube__about[data-emphasis="flat"] .cube__ship { /* matches the rest of the line */ }
 .cube__list {
   list-style: none; margin: 0; padding: 0;
   display: flex; flex-direction: column; gap: 8px;

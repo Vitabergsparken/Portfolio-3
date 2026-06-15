@@ -44,8 +44,7 @@ function FrontFace() {
 function ProjectsFace({ onNavigate }) {
   const items = [
   { id: "inamo", label: "Research — inamo" },
-  { id: "arcledi", label: "Product — Arcledi OÜ" },
-  { id: "chas", label: "Concept — Chas Academy" }];
+  { id: "aiportfolio", label: "Product — AI portfolio redesign" }];
 
   return <>
     <div className="cube__corner">Selected work · 02 / 06</div>
@@ -60,10 +59,10 @@ function ProjectsFace({ onNavigate }) {
   </>;
 }
 
-function AboutFace({ onNavigate }) {
+function AboutFace({ onNavigate, emphasis = "accent" }) {
   return <>
     <div className="cube__corner">About · 03 / 06</div>
-    <p className="cube__big" style={{ lineHeight: "0.95" }}>A UX-designer<br />focused on<br />adapting.</p>
+    <p className="cube__big cube__about" data-emphasis={emphasis} style={{ lineHeight: "0.95" }}>UX-design<br />+ vibecode<br />= <span className="cube__ship">shipped</span></p>
     <a onClick={(e) => {e.stopPropagation();onNavigate("about");}}
     style={{ borderBottom: '1.5px solid currentColor', alignSelf: 'flex-start', fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', paddingBottom: 2 }}>
       Read about me →
@@ -87,7 +86,7 @@ function ContactFace() {
 function ResumeFace({ onNavigate }) {
   return <>
     <div className="cube__corner">Résumé · 05 / 06</div>
-    <p className="cube__big" style={{ lineHeight: "0.95" }}>RESUMÉ<br /><span style={{ background: 'var(--accent)', padding: '0 10px', marginLeft: -2, lineHeight: "0.95", letterSpacing: "-1.9px" }}>45 SEC READ </span></p>
+    <p className="cube__big" style={{ lineHeight: "0.95" }}>RESUMÉ<br /><span style={{ background: 'var(--accent)', padding: '0 10px', marginLeft: -2, lineHeight: "0.95", letterSpacing: "-1.9px" }}>45 SEC READ </span></p>
     <a onClick={(e) => {e.stopPropagation();onNavigate("resume");}}
     style={{ borderBottom: '1.5px solid currentColor', alignSelf: 'flex-start', fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', paddingBottom: 2 }}>
       Open résumé →
@@ -110,7 +109,7 @@ function renderFaceContent(id, ctx) {
   if (id === "front") return <FrontFace />;
   if (id === "right") return <ProjectsFace onNavigate={ctx.onNavigate} />;
   if (id === "back") return <StatusFace />;
-  if (id === "left") return <AboutFace onNavigate={ctx.onNavigate} />;
+  if (id === "left") return <AboutFace onNavigate={ctx.onNavigate} emphasis={ctx.aboutEmphasis} />;
   if (id === "top") return <ContactFace />;
   if (id === "bottom") return <ResumeFace onNavigate={ctx.onNavigate} />;
   return null;
@@ -121,7 +120,7 @@ const FACE_VARIANT = {
   left: "paper", top: "paper", bottom: "paper"
 };
 
-function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94 }) {
+function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94, aboutEmphasis = "accent" }) {
   const [rotX, setRotX] = useS1(-18);
   const [rotY, setRotY] = useS1(-28);
   const [dragging, setDragging] = useS1(false);
@@ -216,7 +215,7 @@ function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94 }
       data-dragging={dragging ? "" : undefined}>
         {FACES.map((f) =>
         <CubeFace key={f.id} id={f.id} rx={f.rx} ry={f.ry} variant={FACE_VARIANT[f.id]}>
-            {renderFaceContent(f.id, { onNavigate })}
+            {renderFaceContent(f.id, { onNavigate, aboutEmphasis })}
           </CubeFace>
         )}
       </div>

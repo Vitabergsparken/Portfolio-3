@@ -7,7 +7,7 @@ const { useState: useStateP } = React;
 // LANDING — the draggable 3D cube is the menu.
 // ============================================================
 
-function Landing({ onNavigate, idleSpin = true, momentum = 0.94 }) {
+function Landing({ onNavigate, idleSpin = true, momentum = 0.94, aboutEmphasis = "accent" }) {
   return (
     <div className="landing-a">
       <div className="landing-a__status">
@@ -16,7 +16,7 @@ function Landing({ onNavigate, idleSpin = true, momentum = 0.94 }) {
         <span>Open to roles</span>
       </div>
       <div className="cube-stage">
-        <Cube onNavigate={onNavigate} idleSpin={idleSpin} momentum={momentum} />
+        <Cube onNavigate={onNavigate} idleSpin={idleSpin} momentum={momentum} aboutEmphasis={aboutEmphasis} />
         <div className="cube-stage__hint">
           <span className="dot"></span> Drag to rotate · release to glide
         </div>
@@ -129,67 +129,47 @@ const CASES = {
 
     }],
 
-    next: "arcledi"
+    next: "aiportfolio"
   },
-  arcledi: {
-    eyebrow: "Product · 2024",
-    title: "Arcledi OÜ — concept design for two SaaS products.",
+  aiportfolio: {
+    eyebrow: "Product · 2026",
+    title: "AI portfolio redesign — rebuilding this site with Claude.",
     meta: [
-    ["Role", "Product designer"],
-    ["Team", "2 designers, 1 PM"],
-    ["Year", "Oct 2024 — Feb 2025"],
-    ["Output", "Wireframes, prototype"]],
-
-    cover: "accent",
-    sections: [
-    {
-      h: "Summary",
-      body: [
-      "Managing a project of developing concept design for two SaaS products — from first brief to validated, testable prototypes.",
-      "Work included research, market analysis, persona creation, experimental AI-refinement, sketching and wireframes."]
-
-    },
-    {
-      h: "Approach",
-      body: [
-      "I led the discovery phase: identifying the real users behind each product idea, mapping the competitor landscape, and proposing a structure for each interface that could be tested in low-fidelity quickly.",
-      "Concepts were iterated weekly against AI-assisted critique and a small panel of internal reviewers. The aim was to land on directions that survived friction — not the cleanest first sketch."]
-
-    },
-    {
-      h: "Outcome",
-      body: [
-      "Two product concepts, both delivered as wireframes plus a clickable prototype, ready for usability testing with target users."],
-
-      tags: ["Concept", "Research", "Prototype"]
-    }],
-
-    next: "chas"
-  },
-  chas: {
-    eyebrow: "Concept · 2023",
-    title: "Chas Academy — service design exam project.",
-    meta: [
-    ["Role", "UX-designer"],
-    ["Team", "3 designers", ""],
-    ["Year", "Spring 2024"],
-    ["Output", "Concept"]],
+    ["Role", "Designer + builder"],
+    ["Tools", "Claude Code, Claude"],
+    ["Year", "2026"],
+    ["Output", "This site"]],
 
     cover: "ink",
     sections: [
     {
       h: "Summary",
       body: [
-      "A service design project exploring how a public-facing program could be reshaped around its users' actual journey — from first interest, through enrollment, to graduation.",
-      "Built on user research, journey mapping, and a final concept presented to stakeholders."]
+      "My previous portfolio lived in Framer. It looked fine, but every change meant fighting the editor, and the result never quite felt like mine.",
+      "I rebuilt it from scratch with Claude — designing the system in Claude and building the front-end with Claude Code. This page is the result: a hand-built prototype with a draggable 3D cube as its menu."]
 
     },
     {
-      h: "Method",
+      h: "Why I switched",
       body: [
-      "User interviews, journey mapping, business benefit analysis. Outcome was a concept with proposed touchpoints and a measurement plan."],
+      "Framer is fast to start and slow to own. Its templates pushed me toward the same layouts everyone else uses, and the moment I wanted something specific — a cube you can throw and let glide — I hit the ceiling.",
+      "I wanted full control of the markup and the motion, without hand-writing every line myself."]
 
-      tags: ["Service design", "Journey mapping"]
+    },
+    {
+      h: "Process",
+      body: [
+      "I worked with Claude the way I'd work with a developer: describing the feel I wanted, reviewing what came back, and iterating in tight loops. I designed the system first — one accent, one typeface, straight lines — then built against it.",
+      "Claude Code handled the React, the hash routing, and the cube physics. I stayed focused on the decisions that matter: hierarchy, motion, copy, restraint."],
+
+      tags: ["Claude Code", "Design system", "Prototype"]
+    },
+    {
+      h: "Result",
+      body: [
+      "A portfolio I actually own — every token, every transition, every word. It's faster to change, easier to extend, and it finally reads like me.",
+      "Thanks for reading.  — Leo"]
+
     }],
 
     next: "inamo"
@@ -257,12 +237,11 @@ function CaseStudy({ id, onNavigate }) {
 function WorkIndex({ onNavigate }) {
   const cases = [
   { id: "inamo", year: "2025", kind: "Research", title: "Mapping inamo's user-testing platform" },
-  { id: "arcledi", year: "2024", kind: "Product", title: "Concept design for two SaaS products" },
-  { id: "chas", year: "2023", kind: "Concept", title: "Service design for Chas Academy" }];
+  { id: "aiportfolio", year: "2026", kind: "Product", title: "AI portfolio redesign — rebuilt with Claude" }];
 
   return (
     <div style={{ maxWidth: 1080, margin: "0 auto", padding: "clamp(40px, 6vw, 96px) var(--gutter)" }}>
-      <div className="eyebrow" style={{ marginBottom: 16 }}>Selected work · 2023 — 2025</div>
+      <div className="eyebrow" style={{ marginBottom: 16 }}>Selected work · 2025 — 2026</div>
       <h1 style={{ fontSize: "clamp(48px, 7vw, 96px)", fontWeight: 300, letterSpacing: "-0.04em", lineHeight: 0.95, marginBottom: 48 }}>
         Things I designed, researched, and shipped.
       </h1>

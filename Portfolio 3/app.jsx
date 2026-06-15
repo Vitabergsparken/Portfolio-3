@@ -1,12 +1,13 @@
 /* global React, ReactDOM, TopNav, Landing, About, CaseStudy, WorkIndex, Resume,
-   TweaksPanel, useTweaks, TweakSection, TweakToggle, TweakSlider, TweakColor */
+   TweaksPanel, useTweaks, TweakSection, TweakToggle, TweakSlider, TweakColor, TweakRadio */
 
 const { useState: useS, useEffect: useE } = React;
 
 const DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "#D1FE1B",
   "idleSpin": true,
-  "momentum": 0.94
+  "momentum": 0.925,
+  "aboutEmphasis": "accent"
 } /*EDITMODE-END*/;
 
 function App() {
@@ -55,7 +56,8 @@ function App() {
         <Landing
           onNavigate={navigate}
           idleSpin={t.idleSpin}
-          momentum={t.momentum} />
+          momentum={t.momentum}
+          aboutEmphasis={t.aboutEmphasis} />
 
         }
         {route.page === "about" && <About onNavigate={navigate} />}
@@ -90,6 +92,13 @@ function App() {
           step={0.005}
           onChange={(v) => setTweak("momentum", v)} />
         
+        <TweakSection label="About face" />
+        <TweakRadio
+          label='"shipped" emphasis'
+          value={t.aboutEmphasis}
+          options={["accent", "scale", "flat"]}
+          onChange={(v) => setTweak("aboutEmphasis", v)} />
+
         <TweakSection label="Accent" />
         <TweakColor
           label="Brand accent"
