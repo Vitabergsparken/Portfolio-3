@@ -275,61 +275,71 @@ function WorkIndex({ onNavigate }) {
 
 function Resume() {
   return (
-    <article className="resume">
-      <div className="resume__head">
-        <h1 className="resume__name">LEO STIDER</h1>
-        <div className="resume__contact">
-          <a href="mailto:lestider@gmail.com" target="_blank" rel="noopener noreferrer">lestider@gmail.com</a>
-          <a href="tel:+46720116696" target="_blank" rel="noopener noreferrer">(+46) 720 11 66 96</a>
-          <a href="https://www.linkedin.com/in/leo-stider-0b781028b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <div className="resume__stage">
+      <article className="resume">
+        <div className="resume__head">
+          <h1 className="resume__name">LEO STIDER</h1>
+          <div className="resume__contact">
+            <a href="mailto:lestider@gmail.com" target="_blank" rel="noopener noreferrer">lestider@gmail.com</a>
+            <span>·</span>
+            <a href="tel:+46720116696" target="_blank" rel="noopener noreferrer">(+46) 720 11 66 96</a>
+            <span>·</span>
+            <a href="https://www.linkedin.com/in/leo-stider-0b781028b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
         </div>
-      </div>
 
-      <div className="resume__read">[ Read: 45 sec ]</div>
+        <div className="resume__read">[ Read: 45 sec ]</div>
 
-      <h2>Experience</h2>
+        <h2>Experience</h2>
 
-      <div className="resume__entry">
-        <h3>inamo (Feedbackfrog) — Market and user-research</h3>
-        <span className="when">Feb 2025 – May 2025</span>
-        <p>Mapping out product and researching market with the purpose of creating a prioritized roadmap — considering ROI, usability and user input — to guide further development of the digital product.</p>
-        <p>Project included: assessment of product, competitor analysis, researching features, desktop research on testing methods, user interviews, AI-analysis and affinity mapping.</p>
-      </div>
+        <div className="resume__entry">
+          <h3>inamo (Feedbackfrog) — Market and user-research</h3>
+          <span className="when">Feb 2025 – May 2025</span>
+          <p>Mapping out product and researching market with the purpose of creating a prioritized roadmap — considering ROI, usability and user input — to guide further development of the digital product.</p>
+          <p>Project included: assessment of product, competitor analysis, researching features, desktop research on testing methods, user interviews, AI-analysis and affinity mapping.</p>
+        </div>
 
-      <div className="resume__entry">
-        <h3>Arcledi OÜ — Developing product</h3>
-        <span className="when">Oct 2024 – Feb 2025</span>
-        <p>Managing project of developing concept design for two SaaS products.</p>
-        <p>Project included: research, market analysis, persona creation, experimental AI-refinement, sketching and wireframes.</p>
-      </div>
+        <div className="resume__entry">
+          <h3>Arcledi OÜ — Developing product</h3>
+          <span className="when">Oct 2024 – Feb 2025</span>
+          <p>Managing project of developing concept design for two SaaS products.</p>
+          <p>Project included: research, market analysis, persona creation, experimental AI-refinement, sketching and wireframes.</p>
+        </div>
 
-      <h2>Education</h2>
+        <h2>Education</h2>
 
-      <div className="resume__entry">
-        <h3>Chas Academy — UX-design and agile project management</h3>
-        <span className="when">Aug 2023 – June 2025</span>
-        <ul>
-          <li>User research</li>
-          <li>Agile project management</li>
-          <li>UI-design and prototyping</li>
-          <li>Testing and validation</li>
-          <li>Web development</li>
-          <li>Business benefit (service design)</li>
-          <li>Digital accessibility</li>
-        </ul>
-      </div>
+        <div className="resume__entry">
+          <h3>Chas Academy — UX-design and agile project management</h3>
+          <span className="when">Aug 2023 – June 2025</span>
+          <ul>
+            <li>User research</li>
+            <li>Agile project management</li>
+            <li>UI-design and prototyping</li>
+            <li>Testing and validation</li>
+            <li>Web development</li>
+            <li>Business benefit (service design)</li>
+            <li>Digital accessibility</li>
+          </ul>
+        </div>
 
-      <div className="resume__entry">
-        <h3>Stockholm University</h3>
-        <span className="when">Oct 2024 – Feb 2025</span>
-        <ul>
-          <li>Psychology I</li>
-          <li>Practical philosophy I</li>
-        </ul>
-      </div>
+        <div className="resume__entry">
+          <h3>Stockholm University</h3>
+          <span className="when">Oct 2024 – Feb 2025</span>
+          <ul>
+            <li>Psychology I</li>
+            <li>Practical philosophy I</li>
+          </ul>
+        </div>
 
-      <div className="resume__foot">lestider@gmail.com · (+46) 720 11 66 96 · LinkedIn</div>
-    </article>);
+        <div className="resume__foot">
+          <span>lestider@gmail.com</span>
+          <span>·</span>
+          <span>(+46) 720 11 66 96</span>
+          <span>·</span>
+          <a href="https://www.linkedin.com/in/leo-stider-0b781028b/" target="_blank" rel="noopener noreferrer" style={{border:0}}>LinkedIn</a>
+        </div>
+      </article>
+    </div>);
 
 }
 
