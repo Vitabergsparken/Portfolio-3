@@ -62,7 +62,7 @@ function ProjectsFace({ onNavigate }) {
 function AboutFace({ onNavigate, emphasis = "accent" }) {
   return <>
     <div className="cube__corner">About · 03 / 06</div>
-    <p className="cube__big cube__about" data-emphasis={emphasis} style={{ lineHeight: "0.95" }}>UX-design<br />+ vibecode<br />= <span className="cube__ship">shipped</span></p>
+    <p className="cube__big cube__about" data-emphasis={emphasis} style={{ lineHeight: "0.95" }}><span style={{ position: 'relative', zIndex: 1 }}>UX-design</span><br /><span style={{ position: 'relative', zIndex: 1 }}>+ vibecode</span><br />= <span className="cube__ship">shipped</span></p>
     <a onClick={(e) => {e.stopPropagation();onNavigate("about");}}
     style={{ borderBottom: '1.5px solid currentColor', alignSelf: 'flex-start', fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', paddingBottom: 2 }}>
       Read about me →
