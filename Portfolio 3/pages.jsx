@@ -276,8 +276,7 @@ function WorkIndex({ onNavigate }) {
 function Resume() {
   return (
     <div className="resume__stage">
-      <button className="resume__print-btn" onClick={() => window.print()}>Download PDF</button>
-      <article className="resume">
+<article className="resume">
         <div className="resume__head">
           <h1 className="resume__name">LEO STIDER</h1>
           <div className="resume__contact">

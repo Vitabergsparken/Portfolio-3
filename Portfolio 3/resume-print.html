@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leo Stider — Résumé</title>
+  <link rel="stylesheet" href="ds/colors_and_type.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--paper);
+      font-family: var(--font-sans);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .resume {
+      background: var(--paper-deep);
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 16mm 18mm;
+    }
+
+    .resume__head { margin-bottom: var(--s-6); }
+
+    .resume__name {
+      font-family: var(--font-sans);
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: var(--tr-tight);
+      line-height: var(--lh-tight);
+      text-transform: uppercase;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .resume__contact {
+      margin-top: 4px;
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      letter-spacing: var(--tr-wide);
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+    .resume__contact a { color: var(--fg-muted); text-decoration: none; }
+
+    .resume__read {
+      background: var(--accent);
+      color: var(--ink);
+      padding: var(--s-3) 18mm;
+      margin: var(--s-5) -18mm;
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      font-weight: 900;
+      letter-spacing: var(--tr-wide);
+      text-transform: uppercase;
+      display: block;
+    }
+
+    h2 {
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      font-weight: 600;
+      letter-spacing: var(--tr-wide);
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin: var(--s-6) 0 var(--s-4);
+      padding-top: var(--s-4);
+      border-top: 1px solid var(--ink);
+    }
+
+    .resume__entry { margin-bottom: var(--s-5); }
+
+    .resume__entry h3 {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body);
+      font-weight: 700;
+      letter-spacing: var(--tr-normal);
+      line-height: var(--lh-base);
+      margin: 0 0 var(--s-1);
+      color: var(--ink);
+    }
+
+    .when {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      display: inline-block;
+      padding: 4px 10px;
+      margin-bottom: var(--s-3);
+    }
+
+    p {
+      font-size: var(--fs-small);
+      line-height: var(--lh-loose);
+      color: var(--fg-muted);
+      margin: 0;
+    }
+    p + p { margin-top: var(--s-2); }
+
+    ul {
+      margin: 0;
+      padding-left: var(--s-5);
+      font-size: var(--fs-small);
+      line-height: var(--lh-loose);
+      color: var(--fg-muted);
+    }
+
+    .resume__foot {
+      background: var(--accent);
+      color: var(--ink);
+      padding: var(--s-3) 18mm;
+      margin-top: var(--s-7);
+      margin-left: -18mm;
+      margin-right: -18mm;
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      font-weight: 600;
+      letter-spacing: var(--tr-wide);
+      text-transform: uppercase;
+    }
+
+    @media print {
+      html, body { background: none; }
+      .resume { margin: 0; width: 100%; min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <article class="resume">
+    <div class="resume__head">
+      <h1 class="resume__name">LEO STIDER</h1>
+      <div class="resume__contact">
+        lestider@gmail.com | (+46) 720 11 66 96 | <a href="https://www.linkedin.com/in/leo-stider-0b781028b/">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="resume__read">[READ: 45 SEC]</div>
+
+    <h2>Experience</h2>
+
+    <div class="resume__entry">
+      <h3>inamo (Feedbackfrog) — Market and user-research</h3>
+      <span class="when">Feb 2025 – May 2025</span>
+      <p>Mapping out product and researching market with the purpose of creating a prioritized roadmap — considering ROI, usability and user input — to guide further development of the digital product.</p>
+      <p>Project included: assessment of product, competitor analysis, researching features, desktop research on testing methods, user interviews, AI-analysis and affinity mapping.</p>
+    </div>
+
+    <div class="resume__entry">
+      <h3>Arcledi OÜ — Developing product</h3>
+      <span class="when">Oct 2024 – Feb 2025</span>
+      <p>Managing project of developing concept design for two SaaS products.</p>
+      <p>Project included: research, market analysis, persona creation, experimental AI-refinement, sketching and wireframes.</p>
+    </div>
+
+    <h2>Education</h2>
+
+    <div class="resume__entry">
+      <h3>Chas Academy — UX-design and agile project management</h3>
+      <span class="when">Aug 2023 – June 2025</span>
+      <ul>
+        <li>User research</li>
+        <li>Agile project management</li>
+        <li>UI-design and prototyping</li>
+        <li>Testing and validation</li>
+        <li>Web development</li>
+        <li>Business benefit (service design)</li>
+        <li>Digital accessibility</li>
+      </ul>
+    </div>
+
+    <div class="resume__entry">
+      <h3>Stockholm University</h3>
+      <span class="when">Oct 2024 – Feb 2025</span>
+      <ul>
+        <li>Psychology I</li>
+        <li>Practical philosophy I</li>
+      </ul>
+    </div>
+
+    <div class="resume__foot">lestider@gmail.com | (+46) 720 11 66 96 | LinkedIn</div>
+  </article>
+</body>
+</html>
