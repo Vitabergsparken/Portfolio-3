@@ -88,3 +88,13 @@ To move off the in-browser Babel setup: scaffold a Vite + React app, convert eac
 with real `import`/`export`), keep `ds/` + `styles.css` as-is (or convert tokens to
 CSS modules / Tailwind theme), and copy `assets/`. The component logic transfers
 unchanged — only the module wiring differs.
+
+## Open tasks
+
+### résumé PDF — fit to one A4 page
+`resume-print.html` prints with margins set to **None** and looks correct, but the
+content is slightly too long and spills onto a second page. To fix: reduce vertical
+spacing in the `@media print` block in `resume-print.html` without making the
+screen version look cramped. Approach: reduce `padding` on `.resume` from `16mm` to
+~`12mm` top/bottom, and reduce `margin-bottom` on `.resume__entry` and `margin-top`
+on `h2` — but check the printed preview after each tweak rather than guessing.
