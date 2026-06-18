@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-ExecutionPolicy", "Bypass", "-Command", "npx serve 'Portfolio 3' --no-clipboard"],
+      "port": 8000,
+      "autoPort": true
+    }
+  ]
+}
