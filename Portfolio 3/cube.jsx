@@ -86,7 +86,7 @@ function ContactFace() {
 function ResumeFace({ onNavigate }) {
   return <>
     <div className="cube__corner">Résumé · 05 / 06</div>
-    <p className="cube__big" style={{ lineHeight: "0.95" }}>RESUMÉ<br /><span style={{ background: 'var(--accent)', padding: '0 10px', marginLeft: -2, lineHeight: "0.95", letterSpacing: "-1.9px" }}>45 SEC READ </span></p>
+    <p className="cube__big" style={{ lineHeight: "0.95" }}><span style={{ position: 'relative', zIndex: 1 }}>RESUMÉ</span><br /><span style={{ background: 'var(--accent)', padding: '0 10px', marginLeft: -2, lineHeight: "0.95", letterSpacing: "-1.9px" }}>45 SEC READ </span></p>
     <a onClick={(e) => {e.stopPropagation();onNavigate("resume");}}
     style={{ borderBottom: '1.5px solid currentColor', alignSelf: 'flex-start', fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', paddingBottom: 2 }}>
       Open résumé →
