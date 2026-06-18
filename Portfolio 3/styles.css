@@ -462,19 +462,19 @@ body { min-height: 100vh; }
    RESUMÉ
    ============================================================ */
 .resume__stage {
-  background: var(--paper-deep);
+  background: var(--paper);
   min-height: 100%;
-  padding: var(--s-9) var(--gutter);
+  padding: var(--s-7) var(--gutter);
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
 .resume {
-  background: var(--bg-elevated);
+  background: var(--paper-deep);
   max-width: 794px;
   width: 100%;
-  padding: var(--s-9);
+  padding: var(--s-7) var(--s-8);
 }
 
 .resume__head {
@@ -484,7 +484,7 @@ body { min-height: 100vh; }
 .resume__name {
   font-family: var(--font-sans);
   font-size: var(--fs-h1);
-  font-weight: 400;
+  font-weight: 900;
   letter-spacing: var(--tr-tight);
   line-height: var(--lh-tight);
   margin: 0;
@@ -492,32 +492,28 @@ body { min-height: 100vh; }
 }
 
 .resume__contact {
-  margin-top: var(--s-4);
+  margin-top: 4px;
   font-family: var(--font-mono);
   font-size: var(--fs-micro);
   letter-spacing: var(--tr-wide);
   text-transform: uppercase;
   color: var(--fg-muted);
-  display: flex;
-  gap: var(--s-3);
-  flex-wrap: nowrap;
-  align-items: center;
 }
-.resume__contact a { border: 0; color: var(--fg-muted); white-space: nowrap; }
+.resume__contact a { border: 0; color: var(--fg-muted); }
 .resume__contact a:hover { opacity: 0.6; }
 .resume__contact span { opacity: 0.4; }
 
 .resume__read {
   background: var(--accent);
   color: var(--ink);
-  padding: var(--s-3) var(--s-5);
-  margin: var(--s-6) 0;
+  padding: var(--s-3) var(--s-8);
+  margin: var(--s-5) calc(-1 * var(--s-8));
   font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  font-weight: 600;
+  font-size: var(--fs-small);
+  font-weight: 900;
   letter-spacing: var(--tr-wide);
   text-transform: uppercase;
-  display: inline-block;
+  display: block;
 }
 
 .resume h2 {
@@ -527,8 +523,8 @@ body { min-height: 100vh; }
   letter-spacing: var(--tr-wide);
   text-transform: uppercase;
   color: var(--fg-muted);
-  margin: var(--s-8) 0 var(--s-5);
-  padding-top: var(--s-5);
+  margin: var(--s-6) 0 var(--s-4);
+  padding-top: var(--s-4);
   border-top: var(--bw-hair) solid var(--line);
 }
 
@@ -536,23 +532,23 @@ body { min-height: 100vh; }
 
 .resume__entry h3 {
   font-family: var(--font-sans);
-  font-size: var(--fs-h4);
-  font-weight: 500;
-  letter-spacing: var(--tr-snug);
-  line-height: var(--lh-snug);
-  margin: 0 0 var(--s-2);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  letter-spacing: var(--tr-normal);
+  line-height: var(--lh-base);
+  margin: 0 0 var(--s-1);
 }
 
 .resume__entry .when {
   font-family: var(--font-mono);
-  font-size: var(--fs-micro);
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: var(--tr-wide);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
-  background: var(--ink);
+  color: var(--ink);
+  border: 1px solid var(--ink);
   display: inline-block;
-  padding: var(--s-1) var(--s-2);
+  padding: 4px 10px;
   margin-bottom: var(--s-3);
 }
 
@@ -576,8 +572,10 @@ body { min-height: 100vh; }
 .resume__foot {
   background: var(--accent);
   color: var(--ink);
-  padding: var(--s-3) var(--s-5);
-  margin-top: var(--s-8);
+  padding: var(--s-3) var(--s-8);
+  margin-top: var(--s-7);
+  margin-left: calc(-1 * var(--s-8));
+  margin-right: calc(-1 * var(--s-8));
   font-family: var(--font-mono);
   font-size: var(--fs-micro);
   font-weight: 600;

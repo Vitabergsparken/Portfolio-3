@@ -280,15 +280,11 @@ function Resume() {
         <div className="resume__head">
           <h1 className="resume__name">LEO STIDER</h1>
           <div className="resume__contact">
-            <a href="mailto:lestider@gmail.com" target="_blank" rel="noopener noreferrer">lestider@gmail.com</a>
-            <span>·</span>
-            <a href="tel:+46720116696" target="_blank" rel="noopener noreferrer">(+46) 720 11 66 96</a>
-            <span>·</span>
-            <a href="https://www.linkedin.com/in/leo-stider-0b781028b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:lestider@gmail.com" target="_blank" rel="noopener noreferrer">lestider@gmail.com</a>{" | "}<a href="tel:+46720116696" target="_blank" rel="noopener noreferrer">(+46) 720 11 66 96</a>{" | "}<a href="https://www.linkedin.com/in/leo-stider-0b781028b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
 
-        <div className="resume__read">[ Read: 45 sec ]</div>
+        <div className="resume__read">[READ: 45 SEC]</div>
 
         <h2>Experience</h2>
 
@@ -333,9 +329,9 @@ function Resume() {
 
         <div className="resume__foot">
           <span>lestider@gmail.com</span>
-          <span>·</span>
+          <span>|</span>
           <span>(+46) 720 11 66 96</span>
-          <span>·</span>
+          <span>|</span>
           <a href="https://www.linkedin.com/in/leo-stider-0b781028b/" target="_blank" rel="noopener noreferrer" style={{border:0}}>LinkedIn</a>
         </div>
       </article>
