@@ -119,6 +119,8 @@ body { min-height: 100vh; }
   height: 340px;
   perspective: 1600px;
   cursor: grab;
+  position: relative;
+  z-index: 1;
 }
 .cube-wrap[data-dragging] { cursor: grabbing; }
 
@@ -136,15 +138,61 @@ body { min-height: 100vh; }
   flex-direction: column;
   justify-content: space-between;
   padding: 28px;
-  background: var(--paper);
+  /* Frosted glass: translucent fill + 30px background blur (Figma "background blur: 30").
+     The translucency lets the green aura cube behind read through the blur. */
+  background: rgba(241, 240, 255, 0.46);
+  -webkit-backdrop-filter: blur(var(--face-blur, 30px));
+  backdrop-filter: blur(var(--face-blur, 30px));
   border: 0;                 /* no strokes on the cube */
   backface-visibility: hidden;
   font-family: var(--font-sans);
   color: var(--ink);
 }
-.cube__face[data-loud] { background: var(--accent); color: var(--ink); }
-.cube__face[data-ink]  { background: var(--ink); color: var(--paper); }
-.cube__face[data-lav]  { background: var(--paper-deep); }
+.cube__face[data-loud] { background: rgba(209, 254, 27, 0.52); color: var(--ink); }
+.cube__face[data-ink]  { background: rgba(7, 7, 13, 0.5); color: var(--paper); }
+.cube__face[data-lav]  { background: rgba(227, 224, 255, 0.46); }
+
+/* ---- Decoration BEHIND the cube ----
+   A soft green cloud set back behind the menu cube (~3/4 of a face via
+   --deco-scale, so perspective reads it as further away). It never rotates — it
+   only DRIFTS in reaction to the cube's rotation (parallax) and brightens on a
+   fling. Seen softly through the frosted faces. JS feeds --dx/--dy (sway px) and
+   --spd (fling speed 0..1). */
+.cube-deco {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 420px; height: 420px;
+  margin: -210px 0 0 -210px;
+  z-index: 0;
+  pointer-events: none;
+  --dx: 0; --dy: 0; --spd: 0;
+}
+.cube-deco__layer {
+  position: absolute; inset: 0;
+  transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px)) scale(calc(1 + var(--spd) * 0.06));
+  transition: transform 240ms var(--ease-out, ease-out);
+}
+.cube-deco__cloud {
+  position: absolute; inset: 0; margin: auto;
+  width: calc(340px * var(--deco-scale, 0.9));
+  height: calc(340px * var(--deco-scale, 0.9));
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 47%,
+    rgba(209, 254, 27, 1) 0%,
+    rgba(209, 254, 27, 0.85) 36%,
+    rgba(209, 254, 27, 0.32) 60%,
+    rgba(209, 254, 27, 0) 75%);
+  filter: blur(calc(16px + var(--spd) * 18px)) brightness(calc(1 + var(--spd) * 0.4));
+}
+
+/* Slow breath — motion only, suppressed for reduced-motion users */
+@media (prefers-reduced-motion: no-preference) {
+  .cube-deco__cloud { animation: cloudBreath 7s var(--ease-in-out, ease-in-out) infinite; }
+}
+@keyframes cloudBreath {
+  0%, 100% { transform: scale(0.92); }
+  50%      { transform: scale(1.08); }
+}
 
 .cube__corner {
   font-family: var(--font-sans);

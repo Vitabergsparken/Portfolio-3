@@ -26,7 +26,7 @@ function CubeFace({ id, rx, ry, children, variant }) {
       data-loud={variant === "loud" ? "" : undefined}
       data-ink={variant === "ink" ? "" : undefined}
       data-lav={variant === "lav" ? "" : undefined}
-      style={{ transform: faceTransform(rx, ry), backgroundColor: "rgb(241, 240, 255)" }}>
+      style={{ transform: faceTransform(rx, ry) }}>
       
       {children}
     </div>);
@@ -116,11 +116,11 @@ function renderFaceContent(id, ctx) {
 }
 
 const FACE_VARIANT = {
-  front: "paper", right: "lav", back: "loud",
+  front: "paper", right: "lav", back: "paper",
   left: "paper", top: "paper", bottom: "paper"
 };
 
-function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94, aboutEmphasis = "accent" }) {
+function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94, aboutEmphasis = "accent", drift = 26 }) {
   const [rotX, setRotX] = useS1(-18);
   const [rotY, setRotY] = useS1(-28);
   const [dragging, setDragging] = useS1(false);
@@ -132,6 +132,23 @@ function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94, 
   const inertiaRaf = useR1(null);
   const momentumRef = useR1(momentum);
   momentumRef.current = momentum;
+  const decoRef = useR1(null);
+  const driftRef = useR1(drift);
+  driftRef.current = drift;
+
+  // Feed the cloud behind the menu cube. It does NOT rotate — JS gives it a
+  // bounded sway (--dx/--dy px, from the cube's rotation) plus fling speed (--spd).
+  const updateDeco = useCb1(() => {
+    const el = decoRef.current;if (!el) return;
+    const s = stateRef.current;
+    const spd = Math.min(1, Math.hypot(s.vX, s.vY) / 7);
+    const A = driftRef.current;
+    el.style.setProperty("--dx", (Math.sin(s.rotY * Math.PI / 180) * A).toFixed(1));
+    el.style.setProperty("--dy", (Math.sin(s.rotX * Math.PI / 180) * -A).toFixed(1));
+    el.style.setProperty("--spd", spd.toFixed(3));
+  }, []);
+
+  useE1(() => {updateDeco();}, [updateDeco]);
 
   // Idle auto-spin until the first interaction (optional).
   useE1(() => {
@@ -141,6 +158,7 @@ function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94, 
       const dt = t - last;last = t;
       stateRef.current.rotY += dt * 0.012;
       setRotY(stateRef.current.rotY);
+      updateDeco();
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -181,7 +199,8 @@ function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94, 
     s.vY = (e.clientX - s.lastX) * 0.5 / dt * 16;
     s.lastX = e.clientX;s.lastY = e.clientY;s.lastT = now;
     setRotX(s.rotX);setRotY(s.rotY);
-  }, []);
+    updateDeco();
+  }, [updateDeco]);
 
   // On release the cube keeps spinning and glides to a gentle stop on its own
   // momentum — it never snaps a face square to the viewer, so it settles
@@ -195,34 +214,45 @@ function Cube({ size = CUBE_SIZE, onNavigate, idleSpin = true, momentum = 0.94, 
       s.vX *= fr;s.vY *= fr;
       s.rotX += s.vX;s.rotY += s.vY;
       setRotX(s.rotX);setRotY(s.rotY);
+      updateDeco();
       if (Math.abs(s.vX) > 0.02 || Math.abs(s.vY) > 0.02) {
         inertiaRaf.current = requestAnimationFrame(step);
       } else {
+        s.vX = 0;s.vY = 0;updateDeco();
         inertiaRaf.current = null;
       }
     };
     if (Math.abs(s.vX) > 0.04 || Math.abs(s.vY) > 0.04) {
       inertiaRaf.current = requestAnimationFrame(step);
+    } else {
+      s.vX = 0;s.vY = 0;updateDeco();
     }
-  }, []);
+  }, [updateDeco]);
 
   return (
-    <div className="cube-wrap" style={{ width: size, height: size }}
-    data-dragging={dragging ? "" : undefined}
-    onPointerDown={onPointerDown}
-    onPointerMove={onPointerMove}
-    onPointerUp={onPointerUp}
-    onPointerCancel={onPointerUp}>
-      
-      <div className="cube" style={{ transform: `rotateX(${rotX}deg) rotateY(${rotY}deg)` }}
-      data-dragging={dragging ? "" : undefined}>
-        {FACES.map((f) =>
-        <CubeFace key={f.id} id={f.id} rx={f.rx} ry={f.ry} variant={FACE_VARIANT[f.id]}>
-            {renderFaceContent(f.id, { onNavigate, aboutEmphasis })}
-          </CubeFace>
-        )}
+    <>
+      <div className="cube-deco" ref={decoRef}>
+        <div className="cube-deco__layer">
+          <div className="cube-deco__cloud"></div>
+        </div>
       </div>
-    </div>);
+      <div className="cube-wrap" style={{ width: size, height: size }}
+      data-dragging={dragging ? "" : undefined}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}>
+        
+        <div className="cube" style={{ transform: `rotateX(${rotX}deg) rotateY(${rotY}deg)` }}
+        data-dragging={dragging ? "" : undefined}>
+          {FACES.map((f) =>
+          <CubeFace key={f.id} id={f.id} rx={f.rx} ry={f.ry} variant={FACE_VARIANT[f.id]}>
+              {renderFaceContent(f.id, { onNavigate, aboutEmphasis })}
+            </CubeFace>
+          )}
+        </div>
+      </div>
+    </>);
 
 }
 

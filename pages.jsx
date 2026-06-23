@@ -7,7 +7,7 @@ const { useState: useStateP } = React;
 // LANDING — the draggable 3D cube is the menu.
 // ============================================================
 
-function Landing({ onNavigate, idleSpin = true, momentum = 0.94, aboutEmphasis = "accent" }) {
+function Landing({ onNavigate, idleSpin = true, momentum = 0.94, aboutEmphasis = "accent", drift = 26 }) {
   return (
     <div className="landing-a">
       <div className="landing-a__status">
@@ -16,7 +16,7 @@ function Landing({ onNavigate, idleSpin = true, momentum = 0.94, aboutEmphasis =
         <span>Open to roles</span>
       </div>
       <div className="cube-stage">
-        <Cube onNavigate={onNavigate} idleSpin={idleSpin} momentum={momentum} aboutEmphasis={aboutEmphasis} />
+        <Cube onNavigate={onNavigate} idleSpin={idleSpin} momentum={momentum} aboutEmphasis={aboutEmphasis} drift={drift} />
         <div className="cube-stage__hint">
           <span className="dot"></span> Drag to rotate · release to glide
         </div>
