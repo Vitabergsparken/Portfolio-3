@@ -7,12 +7,52 @@
   <link rel="stylesheet" href="ds/colors_and_type.css" />
   <link rel="stylesheet" href="ds/portfolio.css" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ---- Boot loader: shows instantly (plain CSS), before Babel transpiles.
+       A single pulsing lime cloud — the same green that sits behind the cube. ---- */
+    #root { opacity: 0; }
+    body.app-ready #root { opacity: 1; transition: opacity 420ms cubic-bezier(0.2,0.7,0.2,1); }
+
+    #app-loader {
+      position: fixed; inset: 0; z-index: 999;
+      /* Mirror the app frame: a fixed spacer on top, then the cloud centered in
+         the REMAINING space — so it lands exactly where the cube's cloud does.
+         The cube-stage is flex:1 below the top nav (~70px) AND the landing
+         status bar (~65px); +13px aligns to the cube cloud's center within the
+         stage. = 148px. */
+      display: flex; flex-direction: column;
+      background: #F1F0FF;
+      transition: opacity 360ms cubic-bezier(0.2,0.7,0.2,1);
+    }
+    #app-loader::before { content: ""; flex: 0 0 148px; }
+    #app-loader__stage { flex: 1; display: grid; place-items: center; }
+    body.app-ready #app-loader { opacity: 0; pointer-events: none; }
+    #app-loader__cloud {
+      width: 306px; height: 306px; border-radius: 50%;
+      background: radial-gradient(circle at 50% 47%,
+        rgba(209,254,27,1) 0%,
+        rgba(209,254,27,0.85) 36%,
+        rgba(209,254,27,0.32) 60%,
+        rgba(209,254,27,0) 75%);
+      filter: blur(16px);
+      animation: loaderPulse 1.4s cubic-bezier(0.45,0,0.55,1) infinite;
+    }
+    @keyframes loaderPulse {
+      0%, 100% { transform: scale(0.82); opacity: 0.65; }
+      50%      { transform: scale(1.08); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #app-loader__cloud { animation: none; }
+      body.app-ready #root { transition: none; }
+    }
+  </style>
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="root"></div>
+  <div id="app-loader"><div id="app-loader__stage"><div id="app-loader__cloud"></div></div></div>
 
   <script type="text/babel" src="tweaks-panel.jsx"></script>
   <script type="text/babel" src="cube.jsx"></script>

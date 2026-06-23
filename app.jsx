@@ -7,7 +7,10 @@ const DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "#D1FE1B",
   "idleSpin": true,
   "momentum": 0.925,
-  "aboutEmphasis": "accent"
+  "aboutEmphasis": "accent",
+  "cloudDrift": 26,
+  "decoSize": 0.9,
+  "auraBlur": 30
 } /*EDITMODE-END*/;
 
 function App() {
@@ -40,10 +43,23 @@ function App() {
     window.scrollTo({ top: 0, behavior: "instant" });
   };
 
+  // Reveal: once App has mounted (React + Babel are ready), fade the content
+  // in and fade the boot loader out, then drop the loader from the DOM.
+  useE(() => {
+    const reveal = () => {
+      document.body.classList.add("app-ready");
+      const loader = document.getElementById("app-loader");
+      if (loader) setTimeout(() => loader.remove(), 500);
+    };
+    // next frame, so the opacity transition has a start value to animate from
+    const id = requestAnimationFrame(() => requestAnimationFrame(reveal));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   const showFooter = route.page !== "home";
 
   return (
-    <div className="frame" style={{ "--accent": t.accent }}>
+    <div className="frame" style={{ "--accent": t.accent, "--face-blur": `${t.auraBlur}px`, "--deco-scale": t.decoSize }}>
       <TopNav
         route={route}
         onNavigate={navigate}
@@ -57,7 +73,8 @@ function App() {
           onNavigate={navigate}
           idleSpin={t.idleSpin}
           momentum={t.momentum}
-          aboutEmphasis={t.aboutEmphasis} />
+          aboutEmphasis={t.aboutEmphasis}
+          drift={t.cloudDrift} />
 
         }
         {route.page === "about" && <About onNavigate={navigate} />}
@@ -78,6 +95,31 @@ function App() {
       }
 
       <TweaksPanel title="Tweaks">
+        <TweakSection label="Cube backdrop" />
+        <TweakSlider
+          label="Cloud drift"
+          value={t.cloudDrift}
+          min={0}
+          max={60}
+          step={2}
+          onChange={(v) => setTweak("cloudDrift", v)} />
+        
+        <TweakSlider
+          label="Decoration size"
+          value={t.decoSize}
+          min={0.6}
+          max={1.3}
+          step={0.05}
+          onChange={(v) => setTweak("decoSize", v)} />
+        
+        <TweakSlider
+          label="Face blur"
+          value={t.auraBlur}
+          min={0}
+          max={60}
+          step={2}
+          onChange={(v) => setTweak("auraBlur", v)} />
+        
         <TweakSection label="Cube" />
         <TweakToggle
           label="Idle auto-spin"
